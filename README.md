@@ -6,3 +6,5 @@ I'm using multiple resources to study and apply what I learn here with examples.
 
 * [Data Science Fundamentals: Learning Basic Concepts, Data Wrangling, and Databases with Python](https://www.safaribooksonline.com/library/view/data-science-fundamentals/9780134660141/). Created by Jonathan Dinu.
     * [Course Materials](https://github.com/hopelessoptimism/data-science-fundamentals).
+    * Data Sources:
+        - [Airbnb Data](http://insideairbnb.com/get-the-data.html).
