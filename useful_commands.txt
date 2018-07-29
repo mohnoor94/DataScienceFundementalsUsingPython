@@ -1,0 +1,13 @@
+we use ipython interactive shell
+
+- To work on shell while update a source file, we should use autoreload to automatically reload any changes in source file:
+==> %load_ext autoreload
+==> %autoreload 2
+
+- To import a python file as a module, use:
+==> import processing_airbnb_reviews
+
+- You can set an alias for your imported source file:
+==> import airbnb_recommender as ar
+
+- In ipython use '?' and '??' after any command to get help
