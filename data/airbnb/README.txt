@@ -3,6 +3,6 @@ please download data from
 and rename the file to 'seattle_reviews_17May2018.csv'.
 
 2- http://data.insideairbnb.com/australia/tas/tasmania/2018-06-26/data/listings.csv.gz
-and rename the file to 'seatle_listings_17May2018.csv'.
+and rename the file to 'seattle_listings_17May2018.csv'.
 
-before executing 'lesson2_data_science_process/processing_airbnb_reviews.py' example.
+before executing lesson2 examples/scripts.

@@ -80,6 +80,6 @@ def recommend(user_id, number_of_recommendations=10):
     fellow_travelers = find_travelers(reviews_records, custom_listings)
     counts = count_triangles(reviews_records, fellow_travelers)
     recommendations = recommend_listings(counts, custom_listings, number_of_recommendations)
-    still_needed_recommendations = abs(custom_recommendation_number - len(recommendations))
-    recommendations.extend(get_top_popular_listings(still_needed_recommendations))
+    popularity_recommendation_number = abs(custom_recommendation_number - len(recommendations))
+    recommendations.extend(get_top_popular_listings(popularity_recommendation_number))
     return recommendations
