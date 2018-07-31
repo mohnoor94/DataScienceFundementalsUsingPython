@@ -1,23 +1,9 @@
 # Goal: Aid users in their discovery if relevant listings
 
-import csv
 import collections as coll
-
-# open and parse csv files
-reviews_file = open('../data/airbnb/seattle_reviews_17May2018.csv', newline='')
-listings_file = open('../data/airbnb/seattle_listings_17May2018.csv', newline='')
-
-reviews_reader = csv.reader(reviews_file)
-listings_reader = csv.reader(listings_file)
-
-reviews_headers = next(reviews_reader)
-listings_headers = next(listings_reader)
-
-reviews_records = list(reviews_reader)
-listings_records = list(listings_reader)
-
-# set user for recommendations
-randomUserId = '677093'
+import csv
+import sys
+import webbrowser
 
 
 def find_listings(records, user_id):
@@ -73,13 +59,45 @@ def get_top_popular_listings(number_of_listings=10):
     return get_baseline()[:number_of_listings]
 
 
-# the final recommender method
+# the final methods to be used by users are below
 def recommend(user_id, number_of_recommendations=10):
     custom_recommendation_number = int(0.7 * number_of_recommendations)
     custom_listings = find_listings(reviews_records, user_id)
     fellow_travelers = find_travelers(reviews_records, custom_listings)
     counts = count_triangles(reviews_records, fellow_travelers)
-    recommendations = recommend_listings(counts, custom_listings, number_of_recommendations)
-    popularity_recommendation_number = abs(custom_recommendation_number - len(recommendations))
+    recommendations = recommend_listings(counts, custom_listings, custom_recommendation_number)
+    popularity_recommendation_number = abs(number_of_recommendations - len(recommendations))
     recommendations.extend(get_top_popular_listings(popularity_recommendation_number))
     return recommendations
+
+
+def view_rooms(rooms):
+    for room in rooms:
+        webbrowser.open('https://www.airbnb.com/rooms/' + room)
+
+
+def recommend_and_view(user_id, number_of_recommendations=10):
+    recommendations = recommend(user_id, number_of_recommendations)
+    rooms = [result[0] for result in recommendations]
+    view_rooms(rooms)
+
+
+# this will be executed only if we use this script from command line
+if __name__ == '__main__':
+    reviews_file_path, listings_file_path, user = sys.argv[1:]
+    print(reviews_file_path)
+    print(type(reviews_file_path))
+    # open and parse csv files
+    reviews_file = open(reviews_file_path, newline='')
+    listings_file = open(listings_file_path, newline='')
+
+    reviews_reader = csv.reader(reviews_file)
+    listings_reader = csv.reader(listings_file)
+
+    reviews_headers = next(reviews_reader)
+    listings_headers = next(listings_reader)
+
+    reviews_records = list(reviews_reader)
+    listings_records = list(listings_reader)
+
+    recommend_and_view(user, 10)
