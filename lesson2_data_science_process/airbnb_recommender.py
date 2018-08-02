@@ -1,4 +1,5 @@
 # Goal: Aid users in their discovery if relevant listings
+# Using Simple Triangle Closing Technique
 
 import collections as coll
 import csv
@@ -85,8 +86,6 @@ def recommend_and_view(user_id, number_of_recommendations=10):
 # this will be executed only if we use this script from command line
 if __name__ == '__main__':
     reviews_file_path, listings_file_path, user = sys.argv[1:]
-    print(reviews_file_path)
-    print(type(reviews_file_path))
     # open and parse csv files
     reviews_file = open(reviews_file_path, newline='')
     listings_file = open(listings_file_path, newline='')
