@@ -11,3 +11,6 @@ we use ipython interactive shell
 ==> import airbnb_recommender as ar
 
 - In ipython use '?' and '??' after any command to get help
+
+- use ! then the shell command you want inside iPython.
+==> !pip3 install BeautifulSoup4
