@@ -14,3 +14,5 @@ we use ipython interactive shell
 
 - use ! then the shell command you want inside iPython.
 ==> !pip3 install BeautifulSoup4
+
+- os.environ['linux_env_value'] to get a value from Unix based systems. (mainly from ~/.bashrc file).
